@@ -55,7 +55,7 @@ function iso8601($time=false) {
 }
 
 if ($_POST["log"] != "") {
-     $logstr = iso8601(false) . " " . $_SERVER["REMOTE_ADDR"] . " login attempt: " . $_POST["log"] . "/" . $_POST["pwd"] . "\n";
+     $logstr = iso8601(false) . " " . $_SERVER["REMOTE_ADDR"] . " login attempt: " . $_POST["log"] . "/" . $_POST["pwd"] . " - " . $_SERVER['HTTP_USER_AGENT'] . "\n";
      file_put_contents("wordpot.log", $logstr, FILE_APPEND);
 }
  ?>
