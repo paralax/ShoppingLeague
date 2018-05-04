@@ -23,7 +23,7 @@ function iso8601($time=false) {
 }
 
 $json = json_encode($_POST);
-$logstr = iso8601(false) . " " . $_SERVER["REMOTE_ADDR"] . " " . $_SERVER["REMOTE_ADDR"] . " '" . $_SERVER['HTTP_USER_AGENT'] . "' " . $json . "\n";
+$logstr = iso8601(false) . " " . $_SERVER["REMOTE_ADDR"] . " '" . $_SERVER['HTTP_USER_AGENT'] . "' " . $json . "\n";
 file_put_contents("phpmysqladmin_log.json", $logstr, FILE_APPEND);
 
 // Grab phpMyAdmin version and PMA_dl function
