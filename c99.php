@@ -7,9 +7,12 @@ function iso8601($time=false) {
     return (substr($date, 0, strlen($date)-2).':'.substr($date, -2));
 }
 
-$json = json_encode($_POST);
-$logstr = iso8601(false) . " " . $_SERVER["REMOTE_ADDR"] . " '" . $_SERVER['HTTP_USER_AGENT'] . "' " . $json . "\n";
-file_put_contents("backdoor_log.json", $logstr, FILE_APPEND);
+$data = array("timestamp" => iso8601(false),
+         "client_ip" => $_SERVER["REMOTE_ADDR"],
+         "user_agent" => $_SERVER['HTTP_USER_AGENT'],
+         "payload" => $_POST);
+$json = json_encode($data);
+file_put_contents("backdoor_log.json", $json . "\n", FILE_APPEND);
 ?>
 
 
